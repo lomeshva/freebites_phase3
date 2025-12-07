@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <h2 class="section-title">Browse Events</h2>
+  <div class="card-grid">
+    {% for e in events %}
+      <article class="item-card">
+        <h4>{{ e.title }}</h4>
+        <p class="muted">
+          {{ e.building }} — {{ e.room }}<br>
+          {{ e.event_date }} · {{ e.start_time }}–{{ e.end_time }}<br>
+          Items: {{ e.item_count }}
+        </p>
+      </article>
+    {% else %}
+      <p class="empty">No events yet.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

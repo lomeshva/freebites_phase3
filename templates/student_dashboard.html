@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <h2 class="section-title">Student Dashboard</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="label">Available items</span>
+      <span class="value">{{ total_available }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">Expiring ≤ 6 hrs</span>
+      <span class="value">{{ expiring_soon }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">My claims</span>
+      <span class="value">{{ my_claims }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">My servings</span>
+      <span class="value">{{ my_servings }}</span>
+    </div>
+  </div>
+
+  <h3 class="section-subtitle">Popular right now</h3>
+  <div class="card-grid">
+    {% for item in items %}
+      <article class="item-card">
+        <div class="item-icon icon-{{ item.icon }}"></div>
+        <h4>{{ item.name }}</h4>
+        <p class="muted">
+          Remaining: <strong>{{ item.remaining_qty }}</strong><br>
+          Location: {{ item.building }} — {{ item.room }}<br>
+          Expires: {{ item.expires_at }}
+        </p>
+        <form method="post" action="{{ url_for('claim_item', item_id=item.id) }}">
+          <button class="primary-btn small" type="submit">Claim</button>
+        </form>
+        <p class="quota-note">Limit 2 per person</p>
+      </article>
+    {% else %}
+      <p class="empty">No items available right now.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

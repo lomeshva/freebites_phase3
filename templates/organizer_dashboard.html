@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <h2 class="section-title">Organizer Dashboard</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="label">Events</span>
+      <span class="value">{{ stats.event_count or 0 }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">Items</span>
+      <span class="value">{{ stats.item_count or 0 }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">Total Qty</span>
+      <span class="value">{{ stats.total_qty or 0 }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="label">Claimed</span>
+      <span class="value">{{ stats.claimed or 0 }}</span>
+    </div>
+  </div>
+
+  <div class="two-column">
+    <div>
+      <h3 class="section-subtitle">Events</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Location</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for e in events %}
+          <tr>
+            <td>{{ e.title }}</td>
+            <td>{{ e.building }} — {{ e.room }}</td>
+            <td>{{ e.event_date }}</td>
+            <td>{{ e.start_time }}–{{ e.end_time }}</td>
+            <td class="actions">
+              <a class="pill-link" href="{{ url_for('edit_event', event_id=e.id) }}">Edit</a>
+              <a class="pill-link danger"
+                 href="{{ url_for('delete_event', event_id=e.id) }}"
+                 onclick="return confirm('Delete this event?');">Delete</a>
+            </td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5" class="empty">No events yet.</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 class="section-subtitle">Items</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Event</th>
+            <th>Total</th>
+            <th>Remaining</th>
+            <th>Expires</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in items %}
+          <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.event_title }}</td>
+            <td>{{ i.total_qty }}</td>
+            <td>{{ i.remaining_qty }}</td>
+            <td>{{ i.expires_at }}</td>
+          </tr>
+        {% else %}
+          <tr><td colspan="5" class="empty">No items yet.</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+  <h2 class="section-title">My Claims</h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>When</th>
+        <th>Item</th>
+        <th>Event</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for c in claims %}
+      <tr>
+        <td>{{ c.claimed_at }}</td>
+        <td>{{ c.name }}</td>
+        <td>{{ c.event_title }}</td>
+        <td>{{ c.qty }}</td>
+      </tr>
+    {% else %}
+      <tr><td colspan="4" class="empty">You have not claimed anything yet.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

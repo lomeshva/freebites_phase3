@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section narrow">
+  <h2 class="section-title">New Item</h2>
+
+  <form method="post" class="form-grid">
+    <label>
+      <span>Event</span>
+      <select name="event_id" required>
+        <option value="">Choose event</option>
+        {% for e in events %}
+          <option value="{{ e.id }}">{{ e.title }} — {{ e.building }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>
+      <span>Item name</span>
+      <select name="name" required>
+        <option value="">Select item</option>
+        <option>Chicken Sandwich</option>
+        <option>Ham Sandwich</option>
+        <option>Veggie Sandwich</option>
+        <option>Cheese Pizza Slice</option>
+        <option>Veggie Pizza Slice</option>
+        <option>Soda</option>
+        <option>Water</option>
+        <option>Brownie</option>
+        <option>Fruit Cup</option>
+        <option>Granola Bar</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Icon</span>
+      <select name="icon" required>
+        <option value="">Pick icon</option>
+        <option value="sandwich">Sandwich</option>
+        <option value="pizza">Pizza</option>
+        <option value="soda">Soda</option>
+        <option value="water">Water</option>
+        <option value="brownie">Brownie</option>
+        <option value="fruit">Fruit</option>
+      </select>
+    </label>
+
+    <label>
+      <span>Total quantity</span>
+      <input type="number" min="1" name="total_qty" required>
+    </label>
+
+    <label>
+      <span>Expires at</span>
+      <input type="datetime-local" name="expires_at" required>
+    </label>
+
+    <button type="submit" class="primary-btn">Add item</button>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>FreeBites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="top-nav">
+    <div class="nav-left">
+      <div class="logo-pill">
+        <span class="logo-dot"></span>
+        <span class="logo-text">FreeBites</span>
+      </div>
+      {% if user %}
+      <span class="nav-tag">{{ user.email }}</span>
+      {% endif %}
+    </div>
+    <nav class="nav-links">
+      {% if session.get('role') == 'organizer' %}
+        <a href="{{ url_for('organizer_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('new_event') }}">New Event</a>
+        <a href="{{ url_for('new_item') }}">New Item</a>
+      {% elif session.get('role') == 'student' %}
+        <a href="{{ url_for('student_dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('student_browse') }}">Browse</a>
+        <a href="{{ url_for('student_claims') }}">My Claims</a>
+      {% endif %}
+      {% if session.get('role') %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="page">
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div class="flash-stack">
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

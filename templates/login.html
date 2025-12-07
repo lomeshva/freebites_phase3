@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-card">
+    <h1>Welcome to FreeBites</h1>
+    <p class="hero-subtitle">
+      Find leftover event food around Missouri S&amp;T before it goes to waste.
+    </p>
+    <form method="post" class="form-grid">
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" placeholder="you@campus.edu" required>
+      </label>
+      <label>
+        <span>Access code</span>
+        <input type="password" name="code" placeholder="1234" required>
+      </label>
+      <button class="primary-btn" type="submit">Sign in</button>
+      <p class="hint">
+        Organizer: <code>alice@campus.edu / 1234</code><br>
+        Student: <code>bob@campus.edu / 5678</code>
+      </p>
+    </form>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section narrow">
+  <h2 class="section-title">
+    {% if event %}Edit Event{% else %}New Event{% endif %}
+  </h2>
+
+  <form method="post" class="form-grid">
+    <label>
+      <span>Title</span>
+      <input type="text" name="title" value="{{ event.title if event else '' }}" required>
+    </label>
+
+    <label>
+      <span>Building</span>
+      <select name="building" required>
+        <option value="">Select a building</option>
+        {% for b in buildings %}
+          <option value="{{ b }}" {% if event and event.building == b %}selected{% endif %}>{{ b }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>
+      <span>Room</span>
+      <input type="text" name="room" value="{{ event.room if event else '' }}" placeholder="e.g., CS 209" required>
+    </label>
+
+    <label>
+      <span>Date</span>
+      <input type="date" name="event_date" value="{{ event.event_date if event else '' }}" required>
+    </label>
+
+    <label>
+      <span>Start time</span>
+      <input type="time" name="start_time" value="{{ event.start_time if event else '' }}" required>
+    </label>
+
+    <label>
+      <span>End time</span>
+      <input type="time" name="end_time" value="{{ event.end_time if event else '' }}" required>
+    </label>
+
+    <button type="submit" class="primary-btn">
+      {% if event %}Save changes{% else %}Create event{% endif %}
+    </button>
+  </form>
+</section>
+{% endblock %}
