@@ -50,18 +50,7 @@ The app will run at:
 
 ## Project Structure
 
-instance/ # auto-generated SQLite database
-sql/ # init_db.sql (schema + inserts)
-src/
-app.py # Flask routes + GUI logic
-db.py # CRUD operations, joins, aggregation
-static/css/
-style.css # UI styling
-templates/ # HTML pages (Organizer & Student)
-run.py # Application entry point
-final_report.pdf # Full Phase III documentation
-README.md # Project overview + setup
-
+```
 instance/            # auto-generated SQLite database
 sql/                 # init_db.sql (schema + inserts)
 src/
@@ -73,3 +62,5 @@ templates/           # HTML pages (Organizer & Student)
 run.py               # Application entry point
 final_report.pdf     # Full Phase III documentation
 README.md
+```
+
