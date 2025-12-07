@@ -30,20 +30,37 @@ python -c "from src.db import init_db; init_db(); print('DB ready')"
 export FLASK_APP=run.py
 flask run
 ```
-The app will run at:
-http://127.0.0.1:5000
+## Application URL
+The app will run at:  
+**http://127.0.0.1:5000**
 
-Login Accounts (for testing)
+---
 
-Organizer
-Email: alice@campus.edu
-Password: 1234
+## Login Accounts (for Testing)
 
-Student
-Email: bob@campus.edu
-Password: 5678
+### Organizer  
+- **Email:** `alice@campus.edu`  
+- **Password:** `1234`
 
-Project Structure
+### Student  
+- **Email:** `bob@campus.edu`  
+- **Password:** `5678`
+
+---
+
+## Project Structure
+
+instance/ # auto-generated SQLite database
+sql/ # init_db.sql (schema + inserts)
+src/
+app.py # Flask routes + GUI logic
+db.py # CRUD operations, joins, aggregation
+static/css/
+style.css # UI styling
+templates/ # HTML pages (Organizer & Student)
+run.py # Application entry point
+final_report.pdf # Full Phase III documentation
+README.md # Project overview + setup
 
 instance/            # auto-generated SQLite database
 sql/                 # init_db.sql (schema + inserts)
