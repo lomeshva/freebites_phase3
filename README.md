@@ -5,7 +5,7 @@ This folder is a self‑contained Flask + SQLite project.
 ## Quick start
 
 ```bash
-cd freebites_final_project_v2
+cd freebites_finalproject
 
 python3 -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
