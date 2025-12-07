@@ -11,7 +11,7 @@ This project includes:
 
 ---
 
-## 🚀 Quick Start (Run the Project)
+## Quick Start (Run the Project)
 
 ```bash
 cd freebites_phase3
@@ -29,4 +29,30 @@ python -c "from src.db import init_db; init_db(); print('DB ready')"
 # Start application
 export FLASK_APP=run.py
 flask run
+```
+The app will run at:
+http://127.0.0.1:5000
 
+Login Accounts (for testing)
+
+Organizer
+Email: alice@campus.edu
+Password: 1234
+
+Student
+Email: bob@campus.edu
+Password: 5678
+
+Project Structure
+
+instance/            # auto-generated SQLite database
+sql/                 # init_db.sql (schema + inserts)
+src/
+  app.py             # Flask routes + GUI logic
+  db.py              # CRUD operations, joins, aggregation
+static/css/
+  style.css          # UI styling
+templates/           # HTML pages (Organizer & Student)
+run.py               # Application entry point
+final_report.pdf     # Full Phase III documentation
+README.md
