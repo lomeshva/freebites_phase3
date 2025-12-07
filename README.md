@@ -1,24 +1,32 @@
-# FreeBites – Phase 3 Demo (v2)
+# FreeBites – Phase 3 
 
-This folder is a self‑contained Flask + SQLite project.
+A complete **Flask + SQLite** implementation of the FreeBites food-distribution system for **CS2300 – Database Systems (Phase III)**.
 
-## Quick start
+This project includes:
+- Full relational schema + automated database initialization  
+- CRUD operations for events, food items, and student claims  
+- Multi-table join queries and aggregation functions  
+- Organizer & Student GUI dashboards  
+- Completed final report (final_report.pdf)
+
+---
+
+## 🚀 Quick Start (Run the Project)
 
 ```bash
-cd freebites_finalproject
+cd freebites_phase3
 
+# Create virtual environment
 python3 -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+source .venv/bin/activate     # Windows: .venv\Scripts\activate
 
+# Install dependencies
 pip install flask
 
-python -c "from src.db import init_db; init_db(); print('DB ready')" 
+# Initialize database (tables + sample data)
+python -c "from src.db import init_db; init_db(); print('DB ready')"
 
+# Start application
 export FLASK_APP=run.py
 flask run
-```
 
-Login accounts:
-
-* Organizer – `alice@campus.edu` / `1234`
-* Student   – `bob@campus.edu`   / `5678`
